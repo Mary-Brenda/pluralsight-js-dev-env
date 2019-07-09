@@ -1,0 +1,66 @@
+{
+    "name": "javascript-development-environment",
+    "version": "1.0.0",
+    "description": "Javascript Development Environment",
+    "main": "index.js",
+    "scripts": {
+        "prestart": "babel-node buildScripts/startMessage.js",
+        "start": "npm-run-all --parallel open:src lint:watch test:watch",
+        "open:src": "babel-node buildScripts/srcServer.js",
+        "lint": "esw webpack.config.* src buildScripts --color",
+        "lint:watch": "npm run lint -- --watch",
+        "localtunnel": "lt --port 3000 --subdomain mbakoda",
+        "share": "npm-run-all --parallel open:src localtunnel",
+        "test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\"",
+        "test:watch": "npm run test -- --watch"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/webkidt/js-dev-env.git"
+    },
+    "author": "David Pam",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/webkidt/js-dev-env/issues"
+    },
+    "homepage": "https://github.com/webkidt/js-dev-env#readme",
+    "devDependencies": {
+        "@babel/cli": "^7.4.4",
+        "@babel/core": "^7.4.5",
+        "@babel/node": "^7.4.5",
+        "@babel/preset-env": "^7.4.5",
+        "@babel/register": "^7.4.4",
+        "babel-loader": "^8.0.6",
+        "chai": "^4.2.0",
+        "chalk": "^2.4.2",
+        "cheerio": "^1.0.0-rc.3",
+        "compression": "^1.7.4",
+        "cross-env": "^5.2.0",
+        "css-loader": "^3.0.0",
+        "eslint": "^6.0.1",
+        "eslint-plugin-import": "^2.18.0",
+        "eslint-watch": "^5.1.2",
+        "express": "^4.17.1",
+        "faker": "^4.1.0",
+        "html-webpack-plugin": "^3.2.0",
+        "jsdom": "^15.1.1",
+        "json-schema-faker": "^0.5.0-rc17",
+        "json-server": "^0.15.0",
+        "localtunnel": "^1.9.2",
+        "mini-css-extract-plugin": "^0.7.0",
+        "mocha": "^6.1.4",
+        "nock": "^10.0.6",
+        "npm-run-all": "^4.1.5",
+        "numeral": "^2.0.6",
+        "open": "^6.3.0",
+        "rimraf": "^2.6.3",
+        "style-loader": "^0.23.1",
+        "webpack": "^4.35.0",
+        "webpack-dev-middleware": "^3.7.0",
+        "webpack-hot-middleware": "^2.25.0",
+        "webpack-md5-hash": "0.0.6"
+    },
+    "dependencies": {
+        "whatwg-fetch": "^3.0.0"
+    }
+}
